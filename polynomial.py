@@ -58,7 +58,8 @@ class Mul:
 poly = Add( Add( Int(4), Int(3)), Add( X(), Mul( Int(1), Add( Mul(X(), X()), Int(1)))))
 print(poly)
 
-print(Add(3,6))
-print(Div(4,0))
-print(Sub(5,8))
-print(Mul(3,6))
+div_poly = Div(poly, Add(Int(2), X()))
+sub_poly = Sub(poly, Mul(Int(3), X()))
+
+print(div_poly)
+print(sub_poly)
