@@ -19,6 +19,23 @@ class Add:
 
     def __repr__(self):
         return repr(self.p1) + " + " + repr(self.p2)
+    
+class Div:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+        
+    def __repr__(self):
+        return repr(self.p1) + " * " + repr(self.p2)
+    
+class Sub:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+        
+    def __repr__(self):
+        return repr(self.p1) + " - " + repr(self.p2)
+    
 
 class Mul:
     def __init__(self, p1, p2):
