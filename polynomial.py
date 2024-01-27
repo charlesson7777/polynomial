@@ -26,7 +26,7 @@ class Div:
         self.p2 = p2
         
     def __repr__(self):
-        return repr(self.p1) + " * " + repr(self.p2)
+        return repr(self.p1) + " / " + repr(self.p2)
     
 class Sub:
     def __init__(self, p1, p2):
@@ -54,3 +54,8 @@ class Mul:
 
 poly = Add( Add( Int(4), Int(3)), Add( X(), Mul( Int(1), Add( Mul(X(), X()), Int(1)))))
 print(poly)
+
+print(Add(3,6))
+print(Div(4,7))
+print(Sub(5,8))
+print(Mul(9,6))
