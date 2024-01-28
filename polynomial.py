@@ -78,16 +78,16 @@ class Mul:
         return repr(self.p1) + " * " + repr(self.p2)
     
     def evaluate(self, x):
-        return self.p1.evaluate(x) / self.p2.evaluate(x)
+        return self.p1.evaluate(x) * self.p2.evaluate(x)
 
 
 poly = Add( Add( Int(4), Int(3)), Add( X(), Mul( Int(1), Add( Mul(X(), X()), Int(1)))))
 print(poly)
 
-div_poly = Div(poly, Add(Int(2), X()))
-sub_poly = Sub(poly, Mul(Int(3), X()))
+#div_poly = Div(poly, Add(Int(2), X()))
+#sub_poly = Sub(poly, Mul(Int(3), X()))
 
-print(div_poly)
-print(sub_poly)
+#print(div_poly)
+#print(sub_poly)
 
 print(poly.evaluate(2))
