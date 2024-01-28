@@ -35,10 +35,16 @@ class Div:
         self.p2 = p2
         
     def __repr__(self):
-        if self.p2==0:
-            return repr(self.p1) + " cannot be divided by 0"
-        else: 
-            return repr(self.p1) + " / " + repr(self.p2)
+        if isinstance(self.p1, (Add, Mul, Sub)):#This line verifies if self.p1 is an object of the Add class
+            if isinstance(self.p2, (Add, Mul, Sub)):#This line verifies if self.p2 is an object of the Add class
+                 return "( " + repr(self.p1) + " ) / ( " + repr(self.p2) + " )"
+            return "( " + repr(self.p1) + " ) / " + repr(self.p2)
+        if isinstance(self.p2, (Add, Mul, Sub)):
+            return repr(self.p1) + " / ( " + repr(self.p2) + " )"
+        if isinstance(self.p2, Int) and self.p2.i == 0:
+            return "Can't divide by 0"
+        return repr(self.p1) + " / ( " + repr(self.p2) + " )"
+        
     
     def evaluate(self, x):
         if self.p2.evaluate(x) == 0:
@@ -63,11 +69,11 @@ class Mul:
         self.p2 = p2
 
     def __repr__(self):
-        if isinstance(self.p1, Add):#This line verifies if self.p1 is an object of the Add class
-            if isinstance(self.p2, Add):#This line verifies if self.p2 is an object of the Add class
+        if isinstance(self.p1, (Add, Sub, Div)):#This line verifies if self.p1 is an object of the Add class
+            if isinstance(self.p2, (Add, Sub,Div)):#This line verifies if self.p2 is an object of the Add class
                  return "( " + repr(self.p1) + " ) * ( " + repr(self.p2) + " )"
             return "( " + repr(self.p1) + " ) * " + repr(self.p2)
-        if isinstance(self.p2, Add):
+        if isinstance(self.p2, (Add, Sub, Div)):
             return repr(self.p1) + " * ( " + repr(self.p2) + " )"
         return repr(self.p1) + " * " + repr(self.p2)
     
@@ -81,7 +87,7 @@ print(poly)
 div_poly = Div(poly, Add(Int(2), X()))
 sub_poly = Sub(poly, Mul(Int(3), X()))
 
-#print(div_poly)
-#print(sub_poly)
+print(div_poly)
+print(sub_poly)
 
 print(poly.evaluate(2))
